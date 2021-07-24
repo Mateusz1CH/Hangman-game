@@ -36,7 +36,8 @@ def c_letter():
     letter = input("Which letter you select? ").upper()
     return letter
 
-    
+used_letters = []
+   
 #function to check letters position including duplicates
 def list_duplicates_of(seq,item):
     start_at = -1
@@ -59,6 +60,7 @@ def change_blanks_into_letters(position_in_list, letter):
 
 while "-" in blanks:
     letter = c_letter()
+    used_letters.append(letter)
     if letter in choosen_word_list :
         position_in_list = list_duplicates_of(choosen_word_list, letter)
         blanks = change_blanks_into_letters(position_in_list, letter)
@@ -68,6 +70,7 @@ while "-" in blanks:
             print("hangman is dead, the word you were looking for is: {}".format(choosen_word))
             break 
     print(blanks)
+    print("You already used those letters: {}".format(used_letters))
     print("you have {} remaining lives".format(lives))
 
 if lives>0 :
